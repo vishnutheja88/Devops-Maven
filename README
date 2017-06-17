@@ -2,3 +2,41 @@ Simple Maven Projects for testing
 ---------------------
 
 This repository contains two small Maven projects intended as examples of how a Maven projects can be setup. They were created to be used in a presentation about Maven.
+
+
+<distributionManagement>
+    <!-- use the following if you're not using a snapshot version. -->
+    <repository>
+        <id>nexus</id>
+        <name>RepositoryProxyRel</name>
+        <url>http://127.0.0.1:8080/nexus/content/repositories/releases/</url>
+    </repository>
+    <!-- use the following if you ARE using a snapshot version. -->
+    <snapshotRepository>
+        <id>nexus</id>
+        <name>RepositoryProxySnap</name>
+        <url>http://127.0.0.1:8080/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+
+<profiles>
+</profile>
+        <profile>
+               <id>sonar</id>
+               <activation>
+                      <activeByDefault>true</activeByDefault>
+                      </activation>
+               <properties>
+                      <sonar.host.url>
+                             http://localhost:9000
+                             </sonar.host.url>
+                      </properties>
+         </profile>
+         </profiles>
+         
+         <servers>
+    <server>
+        <id>nexus</id>
+        <username>admin</username>
+        <password>admin123</password>
+     </server></servers>
